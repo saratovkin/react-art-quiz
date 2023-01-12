@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './LevelCard.css';
 
-const LevelCard = ({ title, index }: { title: string; index: number }) => {
+const LevelCard = ({ title, index, type }: { title: string; index: number; type: string }) => {
   return (
     <Link to={index.toString()}>
       <div className="category">
@@ -15,7 +15,7 @@ const LevelCard = ({ title, index }: { title: string; index: number }) => {
           className="category-img"
           style={{
             backgroundImage: `url(https://raw.githubusercontent.com/irinainina/image-data/master/img/${
-              index * 10
+              type === 'artists' ? index * 10 : index * 10 + 120
             }.jpg)`,
           }}
         />

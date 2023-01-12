@@ -1,6 +1,6 @@
 import { default as HomePage } from './HomePage/HomePage';
-import { default as QuizLevels } from './QuizLevels/QuizLevels';
+import { default as LevelsPage } from './LevelsPage/LevelsPage';
 import { default as Settings } from './Settings/Settings';
-import { default as ArtistsGame } from './ArtistsGame/AritstsGame';
+import { default as GamePage } from './GamePage/GamePage';
 
-export { HomePage, QuizLevels, Settings, ArtistsGame };
+export { HomePage, LevelsPage, Settings, GamePage };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GameSelector, SettingsBtn } from './components';
+import { ModeSelector, SettingsBtn } from './components';
 import PATH from '../../constants/path';
 
 import './HomePage.css';
@@ -8,12 +8,12 @@ import './HomePage.css';
 const HomePage = () => {
   return (
     <>
-      <div className="game-selectors">
+      <div className="mode-selectors">
         {[PATH.artistQuiz, PATH.picturesQuiz, PATH.blitzQuiz].map((e, i) => (
-          <GameSelector title={e} index={i} key={i} />
+          <ModeSelector title={e} index={i} key={i} />
         ))}
       </div>
-      <SettingsBtn path={PATH.settings} />
+      <SettingsBtn />
     </>
   );
 };

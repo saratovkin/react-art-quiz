@@ -3,23 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { GameEngine } from './components';
 import { Results } from '../../components';
 import { useParams } from 'react-router-dom';
-import './ArtistsGame.css';
+import './GamePage.css';
 
-const ArtistsGame = () => {
+const GamePage = ({ gameMode }: { gameMode: string }) => {
   const params = useParams();
-  const gameId: string = params.gameId ? params.gameId + '0' : '';
+  const gameId: number = params.gameId ? +params.gameId * 10 : 0;
   const [data, setData] = useState([]);
   const [stats, setStats] = useState<boolean[]>([]);
   const [isRoundEnded, setIsRoundEnded] = useState(false);
-
+  const start = gameMode === 'artists' ? 0 : 120;
+  // TODO remove magic numbers @saratovkin
   const getData = () => {
     fetch('https://raw.githubusercontent.com/saratovkin/art-quiz-json/main/images.json')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        setData(myJson);
-      });
+      .then((response) => response.json())
+      .then((pictures) => setData(pictures.slice(start, start + 120)));
   };
   useEffect(() => {
     getData();
@@ -32,11 +29,15 @@ const ArtistsGame = () => {
   if (stats.length === 10 && !isRoundEnded) {
     setIsRoundEnded(true);
   }
-  return isRoundEnded ? (
-    <Results questions={data.slice(+gameId * 10, +gameId * 10 + 10)} stats={stats} />
+  return data.length ? (
+    isRoundEnded ? (
+      <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
+    ) : (
+      <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+    )
   ) : (
-    <GameEngine gameId={gameId} gameData={data} saveAnswer={saveAnswer} />
+    <></>
   );
 };
 
-export default ArtistsGame;
+export default GamePage;
