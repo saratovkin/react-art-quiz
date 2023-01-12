@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { PATH, GENRES } from '../../constants';
 import LevelCard from './components/LevelCard/LevelCard';
 
-import './QuizLevels.css';
+import './LevelsPage.css';
 
-const QuizLevels = ({ type }: { type: string }) => {
+const LevelsPage = ({ type }: { type: string }) => {
   return (
     <>
       <Link to={PATH.home}>Back</Link>
@@ -14,11 +14,11 @@ const QuizLevels = ({ type }: { type: string }) => {
         {/* REFACTOR CHANGE KEY FROM INDEX TO UNIQUE VALUES @saratovkin */}
 
         {[...GENRES].map((title, index) => (
-          <LevelCard index={index} title={title} key={index} />
+          <LevelCard index={index} title={title} key={index} type={type} />
         ))}
       </div>
     </>
   );
 };
 
-export default QuizLevels;
+export default LevelsPage;

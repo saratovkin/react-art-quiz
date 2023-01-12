@@ -1,11 +1,11 @@
-.game-selector {
+.mode-selector {
   max-width: 350px;
   min-width: 250px;
   width: 30vw;
   position: relative;
 }
 
-.game-preview {
+.mode-preview {
   max-width: 350px;
   max-height: 350px;
   min-width: 250px;
@@ -19,7 +19,7 @@
   box-shadow: -12px 12px 16px 0px rgba(34, 60, 80, 0.2);
 }
 
-.game-title {
+.mode-title {
   margin-top: 15px;
   text-align: center;
   font-weight: 700;
