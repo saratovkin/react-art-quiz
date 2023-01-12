@@ -1,0 +1,15 @@
+.stat {
+  text-align: left;
+  margin: 2px;
+  padding: 10px;
+  background-color: #67c23a;
+  cursor: pointer;
+}
+
+.stat.wrong {
+  background-color: #f56c6c;
+}
+
+.stat:hover {
+  filter: brightness(80%);
+}
