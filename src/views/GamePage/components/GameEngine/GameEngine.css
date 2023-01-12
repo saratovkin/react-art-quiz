@@ -42,3 +42,27 @@
 .answer:hover {
   background-color: #bcbcbc;
 }
+
+.picture-answers {
+  max-height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.picture-answer {
+  width: calc(50vw - 30px);
+  height: calc(50vw - 30px);
+  max-width: 285px;
+  max-height: 285px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: .5s;
+  cursor: pointer;
+  transition: background-image .2s ease-in-out;
+}
+
+.picture-answer:hover {
+  box-shadow: 0px 0px 16px 10px rgba(0, 0, 0, 0.5);
+}

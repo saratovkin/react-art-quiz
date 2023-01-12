@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Picture } from '../../../../types';
 import { getRandomAnswers } from '../../../../helpers';
-import './GameEngine.css';
 import { AnswerModal } from '../../../../components';
+import './GameEngine.css';
 
 const GameEngine = ({
   gameId,
@@ -11,35 +11,34 @@ const GameEngine = ({
   gameMode,
   saveAnswer,
 }: {
-  gameId: string;
+  gameId: number;
   gameData: Picture[];
   gameMode: string;
   saveAnswer: (answer: boolean) => void;
 }) => {
   const [questionNum, setQuestionNum] = useState(0);
-  const [isAnswered, setIsAnswered] = useState<{ flag: boolean; answer: boolean }>({
-    flag: false,
-    answer: false,
-  });
+  const [isAnswered, setIsAnswered] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [answers, setAnswers] = useState<Picture[]>([]);
-  const correctAnswer = gameData[+gameId + +questionNum];
+  const correctAnswer = gameData[gameId + questionNum];
   useEffect(() => {
-    if (gameData.length) {
-      setAnswers(getRandomAnswers(correctAnswer, gameData));
-    }
+    setAnswers(getRandomAnswers(correctAnswer, gameData));
   }, [correctAnswer, gameData]);
 
   const checkAnswer = (author: string) => {
-    if (!isAnswered.flag) {
-      setIsAnswered({ flag: true, answer: author === correctAnswer.author });
+    if (!isAnswered) {
+      setIsAnswered(true);
+      setIsCorrect(author === correctAnswer.author);
       saveAnswer(author === correctAnswer.author);
     }
   };
 
   const moveToNextQuestion = () => {
-    setIsAnswered({ flag: false, answer: false });
+    setIsAnswered(false);
+    setIsCorrect(false);
     setQuestionNum(questionNum + 1);
   };
+  console.log(answers);
   return gameData.length ? (
     <div className="game-container">
       {gameMode === 'artists' ? (
@@ -49,7 +48,7 @@ const GameEngine = ({
             className="image-question"
             style={{
               backgroundImage: `url(https://raw.githubusercontent.com/irinainina/image-data/master/img/${
-                +gameId + +questionNum
+                gameId + questionNum
               }.jpg)`,
             }}
           ></div>
@@ -79,7 +78,7 @@ const GameEngine = ({
           </div>
         </>
       )}
-      {isAnswered.flag && <AnswerModal answer={isAnswered.answer} action={moveToNextQuestion} />}
+      {isAnswered && <AnswerModal answer={isCorrect} action={moveToNextQuestion} />}
     </div>
   ) : (
     <></>
