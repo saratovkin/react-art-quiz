@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Picture } from '../../../../types';
 import { getRandomAnswers } from '../../../../helpers';
-import { AnswerModal } from '../../../../components';
+import { AnswerModal, Button } from '../../../../components';
 import './GameEngine.css';
 
 const GameEngine = ({
@@ -55,9 +55,7 @@ const GameEngine = ({
           <div className="answers">
             {/* add unique key @saratovkin */}
             {answers.map((a, i) => (
-              <div className="answer" key={i} onClick={() => checkAnswer(a?.author)}>
-                {a?.author}
-              </div>
+              <Button key={i} text={a?.author} onClick={() => checkAnswer(a?.author)}></Button>
             ))}
           </div>
         </>

@@ -1,3 +1,4 @@
-import GameEngine from './GameEngine/GameEngine';
+import { default as GameEngine } from './GameEngine/GameEngine';
+import {default as NavigationBtns } from './NavigationBtns/NavigationBtns';
 
-export { GameEngine };
+export { GameEngine, NavigationBtns };

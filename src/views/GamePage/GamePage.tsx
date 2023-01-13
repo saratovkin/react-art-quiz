@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { GameEngine } from './components';
+import { GameEngine, NavigationBtns } from './components';
 import { Results } from '../../components';
 import { useParams } from 'react-router-dom';
 import './GamePage.css';
@@ -26,12 +26,20 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
     setStats([...stats, answer]);
   };
 
+  const startAgain = () => {
+    setStats([]);
+    setIsRoundEnded(false);
+  };
+
   if (stats.length === 10 && !isRoundEnded) {
     setIsRoundEnded(true);
   }
   return data.length ? (
     isRoundEnded ? (
-      <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
+      <>
+        <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
+        <NavigationBtns onStartAgain={startAgain} />
+      </>
     ) : (
       <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
     )
