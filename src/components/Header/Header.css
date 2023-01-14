@@ -1,7 +1,47 @@
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 10%;
+  max-width: 1200px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.header-logo {
+  width: 30%;
+}
+
+.header-text {
+  font-weight: 700;
+  font-size: 36px;
+  color: #2c383a;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+}
+
+.header-text span {
+  color: #191d20;
+}
+
+.header-text::after {
+  content: "Art Quiz";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  opacity: .1;
+}
+
+.header-text::before {
+  content: "Art Quiz";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  opacity: .3;
 }
