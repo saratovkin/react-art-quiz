@@ -16,7 +16,7 @@ const Results = ({ questions, stats }: { questions: Picture[]; stats: boolean[] 
       <div className="result-stats">
         {/* TODO add unique keys @saratovkin */}
         {questions.map((q, i) => (
-          <Result info={q} answer={stats[i]} key={i} idx={i + 1} />
+          <Result info={q} answer={stats[i]} key={i} />
         ))}
       </div>
     </div>

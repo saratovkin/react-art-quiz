@@ -4,6 +4,7 @@
   padding: 10px;
   background-color: #67c23a;
   cursor: pointer;
+  user-select: none;
 }
 
 .stat.wrong {
