@@ -17,6 +17,11 @@
   background-position: center center;
   background-size: 100%;
   box-shadow: -12px 12px 16px 0px rgba(34, 60, 80, 0.2);
+  transition: transform .5s;
+}
+
+.mode-preview:hover {
+  transform: scale(1.05, 1.05);
 }
 
 .mode-title {

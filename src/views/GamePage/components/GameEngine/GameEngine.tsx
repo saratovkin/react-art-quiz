@@ -42,8 +42,7 @@ const GameEngine = ({
   return gameData.length ? (
     <div className="game-container">
       {gameMode === 'artists' ? (
-        <>
-          <p>Кто автор данной картины?</p>
+        <div className="artists-container">
           <div
             className="image-question"
             style={{
@@ -53,16 +52,21 @@ const GameEngine = ({
             }}
           ></div>
           <div className="answers">
+            <p>
+              Кто <span>автор</span> данной картины?
+            </p>
             {/* add unique key @saratovkin */}
             {answers.map((a, i) => (
               <Button key={i} text={a?.author} onClick={() => checkAnswer(a?.author)}></Button>
             ))}
           </div>
-        </>
+        </div>
       ) : (
         <>
-          <p>{`Какую картину написал ${correctAnswer?.author} ?`}</p>
-          <div className="answers">
+          <p>
+            Какую картину написал <span>{correctAnswer?.author}</span> ?
+          </p>
+          <div className="picture-answers">
             {answers?.map((a, i) => (
               <div
                 className="picture-answer"
