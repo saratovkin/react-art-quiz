@@ -3,7 +3,7 @@ import { PATH } from './constants';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { HomePage, LevelsPage, Settings, GamePage } from './views';
+import { About, HomePage, LevelsPage, Settings, GamePage } from './views';
 
 createRoot(document.getElementById('root') as HTMLElement)?.render(
   <BrowserRouter>
@@ -15,6 +15,7 @@ createRoot(document.getElementById('root') as HTMLElement)?.render(
         <Route path={`${PATH.artistQuiz}/:gameId`} element={<GamePage gameMode="artists" />} />
         <Route path={`${PATH.picturesQuiz}/:gameId`} element={<GamePage gameMode="pictures" />} />
         <Route path={PATH.settings} element={<Settings />} />
+        <Route path={PATH.about} element={<About />} />
       </Route>
       {/* add Error Page @saratovkin */}
       <Route path="*" element={<></>} />

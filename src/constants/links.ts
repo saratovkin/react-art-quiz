@@ -21,6 +21,10 @@ const LINKS = [
     to: PATH.settings,
     title: 'Настройки',
   },
+  {
+    to: PATH.about,
+    title: 'Информация',
+  },
 ];
 
 export default LINKS;
