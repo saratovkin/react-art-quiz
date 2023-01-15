@@ -1,0 +1,30 @@
+.artists-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  height: 600px;
+}
+
+.image-question {
+  width: 50%;
+  height: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-image .2s ease-in-out;
+}
+
+.answers {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+
+.answers button {
+  width: 80%;
+  height: 70px;
+  font-size: 20px;
+}
