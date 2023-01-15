@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { GameEngine, NavigationBtns, Results, RoundInfo } from './components';
+import { GameEngine, Indicators, NavigationBtns, Results, RoundInfo } from './components';
 import { useParams } from 'react-router-dom';
 import './GamePage.css';
 
@@ -42,7 +42,10 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
           <NavigationBtns onStartAgain={startAgain} />
         </>
       ) : (
-        <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+        <>
+          <Indicators stats={stats} />
+          <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+        </>
       )
     ) : (
       <RoundInfo gameMode={gameMode} gameId={gameId / 10} onClick={() => setisRoundStarted(true)} />
