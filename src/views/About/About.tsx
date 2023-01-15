@@ -29,9 +29,9 @@ const About = () => {
           <p className="about-title">Режим &quot;Художники&quot;</p>
           <span>В этом режиме вам предстоит определить, кто нарисовал картину.</span>
           <span>Один уровень состоит из 10 тематических вопросов.</span>
-          <span>Вам дается картина и 4 вариант ответа на выбор.</span>
+          <span>Вам дается картина и 4 варианта ответа на выбор.</span>
           <span>Время на ответ не ограничено.</span>
-          <Link to={PATH.artistQuiz}>
+          <Link to={`../${PATH.artistQuiz}`}>
             <Button text={'Попробовать'} onClick={() => {}} />
           </Link>
         </div>
@@ -40,11 +40,11 @@ const About = () => {
         <img src="assets/img/gamemode2.jpg" alt="img" />
         <div className="about-text">
           <p className="about-title">Режим &quot;Картины&quot;</p>
-          <span>Ваша задача - определить, какую из 4 картин нарисовал художник</span>
+          <span>Ваша задача - определить, какую из 4 картин нарисовал художник.</span>
           <span>Один уровень состоит из 10 тематических вопросов.</span>
           <span>Вам дается художник и 4 картины на выбор.</span>
           <span>Время на ответ не ограничено.</span>
-          <Link to={PATH.picturesQuiz}>
+          <Link to={`../${PATH.picturesQuiz}`}>
             <Button text={'Попробовать'} onClick={() => {}} />
           </Link>
         </div>
