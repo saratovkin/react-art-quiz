@@ -4,12 +4,14 @@ import { GameEngine, NavigationBtns } from './components';
 import { Results } from '../../components';
 import { useParams } from 'react-router-dom';
 import './GamePage.css';
+import { RoundInfo } from '../../components/RoundInfo';
 
 const GamePage = ({ gameMode }: { gameMode: string }) => {
   const params = useParams();
   const gameId: number = params.gameId ? +params.gameId * 10 : 0;
   const [data, setData] = useState([]);
   const [stats, setStats] = useState<boolean[]>([]);
+  const [isRoundStarted, setisRoundStarted] = useState(false);
   const [isRoundEnded, setIsRoundEnded] = useState(false);
   const start = gameMode === 'artists' ? 0 : 120;
   // TODO remove magic numbers @saratovkin
@@ -35,13 +37,17 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
     setIsRoundEnded(true);
   }
   return data.length ? (
-    isRoundEnded ? (
-      <>
-        <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
-        <NavigationBtns onStartAgain={startAgain} />
-      </>
+    isRoundStarted ? (
+      isRoundEnded ? (
+        <>
+          <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
+          <NavigationBtns onStartAgain={startAgain} />
+        </>
+      ) : (
+        <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+      )
     ) : (
-      <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+      <RoundInfo gameMode={gameMode} gameId={gameId / 10} onClick={() => setisRoundStarted(true)} />
     )
   ) : (
     <></>

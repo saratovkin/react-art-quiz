@@ -1,0 +1,24 @@
+.round-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.round-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.round-number {
+  font-size: 25px;
+}
+
+.round-number span {
+  font-weight: 700;
+}
+
+.round-info button {
+  margin: 20px 0;
+}
