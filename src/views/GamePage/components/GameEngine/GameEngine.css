@@ -1,50 +1,28 @@
 .game-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: calc(100vw - 20px);
-  max-width: 600px;
-  min-width: 280px;
-}
-
-.image-question {
-  min-height: 280px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: background-image .2s ease-in-out;
-}
-
-.answers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 20px;
-  row-gap: 15px;
-}
-
-.answer {
-  width: calc(50vw - 25px);
-  box-sizing: border-box;
-  max-width: 290px;
-  height: 75px;
-  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  border: 1px solid #fff;
-  font-size: 24px;
+  gap: 15px;
+  width: calc(100vw - 20px);
+  height: 100%;
+  max-width: 1200px;
+  min-width: 280px;
   text-align: center;
-  background-color: transparent;
-  transition: .2s;
 }
 
-.answer:hover {
-  background-color: #bcbcbc;
+.game-container p {
+  font-size: 30px;
+  margin: 0;
+}
+
+.game-container span {
+  font-weight: 700;
 }
 
 .picture-answers {
   max-height: 600px;
+  max-width: 600px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { Picture } from '../../../../types';
 import { getRandomAnswers } from '../../../../helpers';
-import { AnswerModal } from '../../../../components';
+import { AnswerModal } from '..';
 import './GameEngine.css';
+import { ArtistsQuestions } from '../ArtistsQuestions';
+import { PicturesQuestions } from '../PicturesQuestions';
 
 const GameEngine = ({
   gameId,
@@ -16,10 +18,10 @@ const GameEngine = ({
   gameMode: string;
   saveAnswer: (answer: boolean) => void;
 }) => {
-  const [questionNum, setQuestionNum] = useState(0);
-  const [isAnswered, setIsAnswered] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
   const [answers, setAnswers] = useState<Picture[]>([]);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const [questionNum, setQuestionNum] = useState(0);
   const correctAnswer = gameData[gameId + questionNum];
   useEffect(() => {
     setAnswers(getRandomAnswers(correctAnswer, gameData));
@@ -38,45 +40,22 @@ const GameEngine = ({
     setIsCorrect(false);
     setQuestionNum(questionNum + 1);
   };
-  console.log(answers);
   return gameData.length ? (
     <div className="game-container">
       {gameMode === 'artists' ? (
-        <>
-          <p>Кто автор данной картины?</p>
-          <div
-            className="image-question"
-            style={{
-              backgroundImage: `url(https://raw.githubusercontent.com/irinainina/image-data/master/img/${
-                gameId + questionNum
-              }.jpg)`,
-            }}
-          ></div>
-          <div className="answers">
-            {/* add unique key @saratovkin */}
-            {answers.map((a, i) => (
-              <div className="answer" key={i} onClick={() => checkAnswer(a?.author)}>
-                {a?.author}
-              </div>
-            ))}
-          </div>
-        </>
+        <ArtistsQuestions
+          gameId={gameId}
+          questionNum={questionNum}
+          answers={answers}
+          checkAnswer={checkAnswer}
+        />
       ) : (
-        <>
-          <p>{`Какую картину написал ${correctAnswer?.author} ?`}</p>
-          <div className="answers">
-            {answers?.map((a, i) => (
-              <div
-                className="picture-answer"
-                key={i}
-                onClick={() => checkAnswer(a?.author)}
-                style={{
-                  backgroundImage: `url(https://raw.githubusercontent.com/irinainina/image-data/master/img/${a.imageNum}.jpg)`,
-                }}
-              ></div>
-            ))}
-          </div>
-        </>
+        <PicturesQuestions
+          questionNum={questionNum}
+          answers={answers}
+          correctAnswer={correctAnswer}
+          checkAnswer={checkAnswer}
+        />
       )}
       {isAnswered && <AnswerModal answer={isCorrect} action={moveToNextQuestion} />}
     </div>

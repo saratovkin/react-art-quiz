@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ModeSelector, SettingsBtn } from './components';
+import { ModeSelector } from './components';
 import PATH from '../../constants/path';
 
 import './HomePage.css';
@@ -13,7 +13,6 @@ const HomePage = () => {
           <ModeSelector title={e} index={i} key={i} />
         ))}
       </div>
-      <SettingsBtn />
     </>
   );
 };

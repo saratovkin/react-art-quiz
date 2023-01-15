@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../../../../components';
 
 import './AnswerModal.css';
 
@@ -9,9 +10,7 @@ const AnswerModal = ({ answer, action }: { answer: boolean; action: () => void }
       <div className="answer-modal">
         <div className={`answer-icon${answer ? '' : ' wrong'}`} />
         <p className="answer-text">{answer ? 'Верно!' : 'Неверно!'}</p>
-        <button className="next-button" onClick={action}>
-          Next
-        </button>
+        <Button text={'Продолжить'} onClick={action}></Button>
       </div>
     </>
   );

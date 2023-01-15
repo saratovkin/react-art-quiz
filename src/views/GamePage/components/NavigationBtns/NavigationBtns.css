@@ -1,0 +1,8 @@
+.navigation-btns {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}

@@ -1,0 +1,22 @@
+.results {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.result-text {
+  font-size: 20px
+}
+
+.result-score .score {
+  margin: 0;
+  font-size: 100px;
+}
+
+.result-stats {
+  height: auto;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}

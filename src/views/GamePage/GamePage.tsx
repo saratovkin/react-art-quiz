@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { GameEngine } from './components';
-import { Results } from '../../components';
+import { GameEngine, NavigationBtns, Results, RoundInfo } from './components';
 import { useParams } from 'react-router-dom';
 import './GamePage.css';
 
@@ -10,6 +9,7 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
   const gameId: number = params.gameId ? +params.gameId * 10 : 0;
   const [data, setData] = useState([]);
   const [stats, setStats] = useState<boolean[]>([]);
+  const [isRoundStarted, setisRoundStarted] = useState(false);
   const [isRoundEnded, setIsRoundEnded] = useState(false);
   const start = gameMode === 'artists' ? 0 : 120;
   // TODO remove magic numbers @saratovkin
@@ -26,14 +26,26 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
     setStats([...stats, answer]);
   };
 
+  const startAgain = () => {
+    setStats([]);
+    setIsRoundEnded(false);
+  };
+
   if (stats.length === 10 && !isRoundEnded) {
     setIsRoundEnded(true);
   }
   return data.length ? (
-    isRoundEnded ? (
-      <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
+    isRoundStarted ? (
+      isRoundEnded ? (
+        <>
+          <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
+          <NavigationBtns onStartAgain={startAgain} />
+        </>
+      ) : (
+        <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+      )
     ) : (
-      <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
+      <RoundInfo gameMode={gameMode} gameId={gameId / 10} onClick={() => setisRoundStarted(true)} />
     )
   ) : (
     <></>
