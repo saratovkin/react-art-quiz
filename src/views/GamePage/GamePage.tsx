@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { GameEngine, NavigationBtns } from './components';
-import { Results } from '../../components';
+import { GameEngine, NavigationBtns, Results, RoundInfo } from './components';
 import { useParams } from 'react-router-dom';
 import './GamePage.css';
-import { RoundInfo } from '../../components/RoundInfo';
 
 const GamePage = ({ gameMode }: { gameMode: string }) => {
   const params = useParams();

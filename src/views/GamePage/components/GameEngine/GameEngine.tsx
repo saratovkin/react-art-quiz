@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Picture } from '../../../../types';
 import { getRandomAnswers } from '../../../../helpers';
-import { AnswerModal } from '../../../../components';
+import { AnswerModal } from '..';
 import './GameEngine.css';
 import { ArtistsQuestions } from '../ArtistsQuestions';
 import { PicturesQuestions } from '../PicturesQuestions';

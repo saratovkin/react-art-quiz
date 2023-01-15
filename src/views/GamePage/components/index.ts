@@ -1,4 +1,9 @@
-import { default as GameEngine } from './GameEngine/GameEngine';
-import {default as NavigationBtns } from './NavigationBtns/NavigationBtns';
+import { AnswerModal } from './AnswerModal';
+import { ArtistsQuestions } from './ArtistsQuestions';
+import { GameEngine } from './GameEngine';
+import { NavigationBtns } from './NavigationBtns';
+import { PicturesQuestions } from './PicturesQuestions';
+import { Results } from './Results';
+import { RoundInfo } from './RoundInfo';
 
-export { GameEngine, NavigationBtns };
+export { AnswerModal, ArtistsQuestions, GameEngine, NavigationBtns, PicturesQuestions, Results, RoundInfo };

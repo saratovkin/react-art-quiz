@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Picture } from '../../types';
+import { Picture } from '../../../../types';
 import { Result } from './components';
 
 import './Results.css';
