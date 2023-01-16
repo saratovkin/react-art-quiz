@@ -40,7 +40,7 @@ const GameEngine = ({
     setIsCorrect(false);
     setQuestionNum(questionNum + 1);
   };
-  return gameData.length ? (
+  return (
     <div className="game-container">
       {gameMode === 'artists' ? (
         <ArtistsQuestions
@@ -59,8 +59,6 @@ const GameEngine = ({
       )}
       {isAnswered && <AnswerModal answer={isCorrect} action={moveToNextQuestion} />}
     </div>
-  ) : (
-    <></>
   );
 };
 
