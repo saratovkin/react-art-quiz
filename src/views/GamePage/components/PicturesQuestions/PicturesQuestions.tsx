@@ -11,14 +11,13 @@ const PicturesQuestions = ({ answers, correctAnswer, checkAnswer }: AnswersState
       </p>
       <div className="picture-answers">
         {answers?.map((a, i) => (
-          <div
+          <img
             className="picture-answer"
             key={i}
+            src={`https://raw.githubusercontent.com/irinainina/image-data/master/img/${a.imageNum}.jpg`}
+            alt="picture"
             onClick={() => checkAnswer(a?.author)}
-            style={{
-              backgroundImage: `url(https://raw.githubusercontent.com/irinainina/image-data/master/img/${a.imageNum}.jpg)`,
-            }}
-          ></div>
+          />
         ))}
       </div>
     </>

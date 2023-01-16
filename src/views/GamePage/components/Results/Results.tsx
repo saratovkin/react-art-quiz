@@ -5,7 +5,7 @@ import { Result } from './components';
 
 import './Results.css';
 
-const Results = ({ questions, stats }: { questions: Picture[]; stats: boolean[] }) => {
+const Results = ({ pictures, stats }: { pictures: Picture[]; stats: boolean[] }) => {
   return (
     <div className="results">
       <div className="result-score">
@@ -15,8 +15,8 @@ const Results = ({ questions, stats }: { questions: Picture[]; stats: boolean[] 
       <p className="result-text">Ваша статистика:</p>
       <div className="result-stats">
         {/* TODO add unique keys @saratovkin */}
-        {questions.map((q, i) => (
-          <Result info={q} answer={stats[i]} key={i} />
+        {pictures.map((p, i) => (
+          <Result info={p} answer={stats[i]} key={i} />
         ))}
       </div>
     </div>

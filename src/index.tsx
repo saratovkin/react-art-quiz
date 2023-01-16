@@ -13,8 +13,8 @@ createRoot(document.getElementById('root') as HTMLElement)?.render(
       <Routes>
         <Route path={PATH.home} element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path={PATH.artistQuiz} element={<LevelsPage type="artists" />} />
-          <Route path={PATH.picturesQuiz} element={<LevelsPage type="pictures" />} />
+          <Route path={PATH.artistQuiz} element={<LevelsPage gameMode="artists" />} />
+          <Route path={PATH.picturesQuiz} element={<LevelsPage gameMode="pictures" />} />
           <Route path={`${PATH.artistQuiz}/:gameId`} element={<GamePage gameMode="artists" />} />
           <Route path={`${PATH.picturesQuiz}/:gameId`} element={<GamePage gameMode="pictures" />} />
           <Route path={PATH.settings} element={<Settings />} />

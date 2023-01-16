@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { GameEngine, Indicators, NavigationBtns, Results, RoundInfo } from './components';
 import { useParams } from 'react-router-dom';
@@ -9,12 +9,13 @@ import './GamePage.css';
 const GamePage = ({ gameMode }: { gameMode: string }) => {
   const state = useSelector((state: RootState) => state.picturesReducer);
   const params = useParams();
+  // TODO remove magic numbers @saratovkin
   const gameId: number = params.gameId ? +params.gameId * 10 : 0;
+  const { pictures } = state;
+  const startIdx = gameId + (gameMode === 'pictures' ? 120 : 0);
   const [stats, setStats] = useState<boolean[]>([]);
   const [isRoundStarted, setisRoundStarted] = useState(false);
   const [isRoundEnded, setIsRoundEnded] = useState(false);
-  const start = gameMode === 'artists' ? 0 : 120;
-  // TODO remove magic numbers @saratovkin
 
   const saveAnswer = (answer: boolean) => {
     setStats([...stats, answer]);
@@ -31,18 +32,13 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
   return isRoundStarted ? (
     isRoundEnded ? (
       <>
-        <Results questions={state.pictures.slice(gameId, gameId + 10)} stats={stats} />
+        <Results pictures={pictures.slice(startIdx, startIdx + 10)} stats={stats} />
         <NavigationBtns onStartAgain={startAgain} />
       </>
     ) : (
       <>
         <Indicators stats={stats} />
-        <GameEngine
-          gameId={gameId}
-          gameMode={gameMode}
-          gameData={state.pictures}
-          saveAnswer={saveAnswer}
-        />
+        <GameEngine gameId={gameId} gameMode={gameMode} saveAnswer={saveAnswer} />
       </>
     )
   ) : (
