@@ -7,4 +7,13 @@ import { PicturesQuestions } from './PicturesQuestions';
 import { Results } from './Results';
 import { RoundInfo } from './RoundInfo';
 
-export { AnswerModal, ArtistsQuestions, GameEngine, Indicators, NavigationBtns, PicturesQuestions, Results, RoundInfo };
+export {
+  AnswerModal,
+  ArtistsQuestions,
+  GameEngine,
+  Indicators,
+  NavigationBtns,
+  PicturesQuestions,
+  Results,
+  RoundInfo,
+};

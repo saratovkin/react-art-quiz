@@ -36,9 +36,9 @@
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  transition: .5s;
+  transition: 0.5s;
   cursor: pointer;
-  transition: background-image .2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
 }
 
 .picture-answer:hover {

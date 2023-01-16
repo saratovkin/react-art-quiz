@@ -11,4 +11,4 @@ export interface AnswersState {
   answers: Picture[];
   correctAnswer?: Picture;
   checkAnswer: (author: string) => void;
-};
+}
