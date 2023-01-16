@@ -25,9 +25,7 @@ const ArtistsQuestions = ({ gameId, questionNum, answers, checkAnswer }: Answers
       </div>
     </div>
   ) : (
-    <div className="loading">
-      <p> Загрузка...</p>
-    </div>
+    <div className="loading" />
   );
 };
 

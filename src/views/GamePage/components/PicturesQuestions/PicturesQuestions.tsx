@@ -31,9 +31,7 @@ const PicturesQuestions = ({ answers, correctAnswer, checkAnswer }: AnswersState
       </div>
     </>
   ) : (
-    <div className="loading">
-      <p> Загрузка...</p>
-    </div>
+    <div className="loading" />
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { Header, Footer } from './components';
-import { RootState, HomePageActions, AppDispatch, fetchImages } from './store';
+import { AppDispatch, fetchImages } from './store';
 
 import './App.css';
 
