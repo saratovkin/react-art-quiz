@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../../../../components';
+import { loadImages } from '../../../../helpers';
 import { AnswersState } from '../../../../types';
 
 import './ArtistsQuestions.css';
 
 const ArtistsQuestions = ({ gameId, questionNum, answers, checkAnswer }: AnswersState) => {
-  return (
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => setIsLoaded(false), [questionNum]);
+  const imgId = gameId ? gameId + questionNum : questionNum;
+  const imgURL = `https://raw.githubusercontent.com/irinainina/image-data/master/img/${imgId}.jpg`;
+  loadImages([imgURL], () => setIsLoaded(true));
+  return isLoaded ? (
     <div className="artists-container">
-      <div
-        className="image-question"
-        style={{
-          backgroundImage: `url(https://raw.githubusercontent.com/irinainina/image-data/master/img/${
-            gameId ? gameId + questionNum : questionNum
-          }.jpg)`,
-        }}
-      ></div>
+      <img className="image-question" src={imgURL} alt="" />
       <div className="answers">
         <p>
           Кто <span>автор</span> данной картины?
@@ -24,6 +23,10 @@ const ArtistsQuestions = ({ gameId, questionNum, answers, checkAnswer }: Answers
           <Button key={i} text={a?.author} onClick={() => checkAnswer(a?.author)}></Button>
         ))}
       </div>
+    </div>
+  ) : (
+    <div className="loading">
+      <p> Загрузка...</p>
     </div>
   );
 };
