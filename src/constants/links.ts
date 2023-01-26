@@ -27,4 +27,19 @@ const LINKS = [
   },
 ];
 
-export default LINKS;
+const HOMEPAGE_LINKS = [
+  {
+    to: PATH.artistQuiz,
+    title: 'Художники',
+  },
+  {
+    to: PATH.picturesQuiz,
+    title: 'Картины',
+  },
+  {
+    to: PATH.blitzQuiz,
+    title: 'Блитц',
+  },
+];
+
+export { LINKS, HOMEPAGE_LINKS };
