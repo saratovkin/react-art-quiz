@@ -12,7 +12,7 @@ const fetchImages = createAsyncThunk('homePage/fetchImages', async () => {
 });
 
 const { actions, reducer } = createSlice({
-  name: 'homePage',
+  name: 'pictures',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -26,5 +26,5 @@ const { actions, reducer } = createSlice({
 });
 
 export { fetchImages };
-export const HomePageActions = actions;
+export const PicturesActions = actions;
 export default reducer;

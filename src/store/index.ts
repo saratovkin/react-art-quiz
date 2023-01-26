@@ -1,6 +1,7 @@
 import { store, fetchImages } from './store';
-import { HomePageActions } from './picturesSlice';
+import { PicturesActions } from './picturesSlice';
+import { StatsActions } from './statsSlice';
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export { store, HomePageActions, fetchImages };
+export { store, PicturesActions, StatsActions, fetchImages };
