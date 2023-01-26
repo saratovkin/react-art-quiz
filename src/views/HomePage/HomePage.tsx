@@ -1,19 +1,17 @@
 import React from 'react';
 
 import { ModeSelector } from './components';
-import PATH from '../../constants/path';
+import { HOMEPAGE_LINKS } from '../../constants';
 
 import './HomePage.css';
 
 const HomePage = () => {
   return (
-    <>
-      <div className="mode-selectors">
-        {[PATH.artistQuiz, PATH.picturesQuiz, PATH.blitzQuiz].map((e, i) => (
-          <ModeSelector title={e} index={i} key={i} />
-        ))}
-      </div>
-    </>
+    <div className="mode-selectors">
+      {HOMEPAGE_LINKS.map((l, i) => (
+        <ModeSelector title={l.title} index={i} link={l.to} key={i} />
+      ))}
+    </div>
   );
 };
 export default HomePage;

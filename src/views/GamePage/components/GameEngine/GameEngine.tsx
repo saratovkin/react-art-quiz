@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Picture } from '../../../../types';
-import { getRandomAnswers } from '../../../../helpers';
+import { RootState } from '../../../../store';
 import { AnswerModal } from '..';
 import { ArtistsQuestions } from '../ArtistsQuestions';
 import { PicturesQuestions } from '../PicturesQuestions';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../../store';
+import { getRandomAnswers } from '../../../../helpers';
+
 import './GameEngine.css';
 
 const GameEngine = ({
@@ -23,7 +24,7 @@ const GameEngine = ({
   const [isCorrect, setIsCorrect] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false);
   const [questionNum, setQuestionNum] = useState(0);
-  const correctAnswer = state.pictures[gameId + questionNum + (gameMode === 'pictures' ? 120 : 0)];
+  const correctAnswer = state.pictures[gameId + questionNum];
   useEffect(() => {
     setAnswers(getRandomAnswers(correctAnswer, state.pictures));
   }, [correctAnswer, state.pictures]);

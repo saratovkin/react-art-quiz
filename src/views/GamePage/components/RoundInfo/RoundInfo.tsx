@@ -1,18 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Button } from '../../../../components';
 import './RoundInfo.css';
 
-const RoundInfo = ({
-  gameMode,
-  gameId,
-  onClick,
-}: {
-  gameMode: string;
-  gameId: number;
-  onClick: () => void;
-}) => {
+const RoundInfo = ({ gameId, onClick }: { gameId: number; onClick: () => void }) => {
   // TODO move string templates to a separate file @saratovkin
+  const gameMode = useParams().gameMode;
   const titleTemplate = gameMode === 'artists' ? 'Художники' : 'Картины';
   const textTemplate1 =
     gameMode === 'artists'

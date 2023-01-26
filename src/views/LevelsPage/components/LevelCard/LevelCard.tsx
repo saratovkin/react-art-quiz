@@ -6,16 +6,20 @@ import './LevelCard.css';
 const LevelCard = ({
   title,
   index,
-  gameMode,
+  roundStats,
 }: {
   title: string;
   index: number;
-  gameMode: string;
+  roundStats: number;
 }) => {
-  const imgIdx = index * 10 + (gameMode === 'pictures' ? 120 : 0);
+  // TODO remove magic numbers @saratovkin
+  const imgIdx = index * 10;
+  const isAttempted = Boolean(roundStats);
+  let className = isAttempted ? 'category attempted' : 'category';
+  className += roundStats === 10 ? ' perfect' : '';
   return (
     <Link to={index.toString()}>
-      <div className="category">
+      <div className={className}>
         <div className="category-title">
           <div className="category-number">{index + 1}</div>
           <div className="category-name">{title}</div>
@@ -25,6 +29,7 @@ const LevelCard = ({
           src={`https://raw.githubusercontent.com/irinainina/image-data/master/img/${imgIdx}.jpg`}
           alt="picture"
         />
+        <div className="category-results">{`Рекорд: ${roundStats}/10`}</div>
       </div>
     </Link>
   );
