@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
-import { GameEngine, NavigationBtns, Results, RoundInfo } from './components';
+import { GameEngine, Indicators, NavigationBtns, Results, RoundInfo } from './components';
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch, StatsActions } from '../../store';
 import './GamePage.css';
 
-const GamePage = ({ gameMode }: { gameMode: string }) => {
+const GamePage = () => {
   const params = useParams();
-  const gameId: number = params.gameId ? +params.gameId * 10 : 0;
-  const [data, setData] = useState([]);
+  const dispatch: AppDispatch = useDispatch();
+  const picturesState = useSelector((state: RootState) => state.picturesReducer);
+  const { pictures } = picturesState;
   const [stats, setStats] = useState<boolean[]>([]);
   const [isRoundStarted, setisRoundStarted] = useState(false);
   const [isRoundEnded, setIsRoundEnded] = useState(false);
-  const start = gameMode === 'artists' ? 0 : 120;
   // TODO remove magic numbers @saratovkin
-  const getData = () => {
-    fetch('https://raw.githubusercontent.com/saratovkin/art-quiz-json/main/images.json')
-      .then((response) => response.json())
-      .then((pictures) => setData(pictures.slice(start, start + 120)));
-  };
+  const gameId = Number(params.gameId);
+  const gameMode = String(params.gameMode);
+  const startIdx = gameId * 10;
+
   useEffect(() => {
-    getData();
-  }, []);
+    if (stats.length === 10) {
+      const result = stats.filter((a) => a).length;
+      dispatch(StatsActions.addResult({ result, gameId }));
+    }
+  }, [stats, gameId]);
 
   const saveAnswer = (answer: boolean) => {
     setStats([...stats, answer]);
@@ -34,21 +38,20 @@ const GamePage = ({ gameMode }: { gameMode: string }) => {
   if (stats.length === 10 && !isRoundEnded) {
     setIsRoundEnded(true);
   }
-  return data.length ? (
-    isRoundStarted ? (
-      isRoundEnded ? (
-        <>
-          <Results questions={data.slice(gameId, gameId + 10)} stats={stats} />
-          <NavigationBtns onStartAgain={startAgain} />
-        </>
-      ) : (
-        <GameEngine gameId={gameId} gameMode={gameMode} gameData={data} saveAnswer={saveAnswer} />
-      )
+  return isRoundStarted ? (
+    isRoundEnded ? (
+      <>
+        <Results pictures={pictures.slice(startIdx, startIdx + 10)} stats={stats} />
+        <NavigationBtns onStartAgain={startAgain} />
+      </>
     ) : (
-      <RoundInfo gameMode={gameMode} gameId={gameId / 10} onClick={() => setisRoundStarted(true)} />
+      <>
+        <Indicators stats={stats} />
+        <GameEngine gameId={startIdx} gameMode={gameMode} saveAnswer={saveAnswer} />
+      </>
     )
   ) : (
-    <></>
+    <RoundInfo gameId={gameId} onClick={() => setisRoundStarted(true)} />
   );
 };
 

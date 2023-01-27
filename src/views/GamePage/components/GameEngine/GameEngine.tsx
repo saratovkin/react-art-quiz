@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Picture } from '../../../../types';
-import { getRandomAnswers } from '../../../../helpers';
+import { RootState } from '../../../../store';
 import { AnswerModal } from '..';
-import './GameEngine.css';
 import { ArtistsQuestions } from '../ArtistsQuestions';
 import { PicturesQuestions } from '../PicturesQuestions';
+import { getRandomAnswers } from '../../../../helpers';
+
+import './GameEngine.css';
 
 const GameEngine = ({
   gameId,
-  gameData,
   gameMode,
   saveAnswer,
 }: {
   gameId: number;
-  gameData: Picture[];
   gameMode: string;
   saveAnswer: (answer: boolean) => void;
 }) => {
+  const state = useSelector((state: RootState) => state.picturesReducer);
   const [answers, setAnswers] = useState<Picture[]>([]);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false);
   const [questionNum, setQuestionNum] = useState(0);
-  const correctAnswer = gameData[gameId + questionNum];
+  const correctAnswer = state.pictures[gameId + questionNum];
   useEffect(() => {
-    setAnswers(getRandomAnswers(correctAnswer, gameData));
-  }, [correctAnswer, gameData]);
+    setAnswers(getRandomAnswers(correctAnswer, state.pictures));
+  }, [correctAnswer, state.pictures]);
 
   const checkAnswer = (author: string) => {
     if (!isAnswered) {
@@ -40,7 +42,7 @@ const GameEngine = ({
     setIsCorrect(false);
     setQuestionNum(questionNum + 1);
   };
-  return gameData.length ? (
+  return (
     <div className="game-container">
       {gameMode === 'artists' ? (
         <ArtistsQuestions
@@ -59,8 +61,6 @@ const GameEngine = ({
       )}
       {isAnswered && <AnswerModal answer={isCorrect} action={moveToNextQuestion} />}
     </div>
-  ) : (
-    <></>
   );
 };
 

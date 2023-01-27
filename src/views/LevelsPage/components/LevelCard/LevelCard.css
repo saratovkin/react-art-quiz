@@ -1,6 +1,10 @@
- .category {
+.category {
   cursor: pointer;
-  transition: .5s;
+  transition: box-shadow 0.5s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   width: 200px;
   background-color: #fff;
@@ -13,15 +17,11 @@
 .category-title {
   width: 100%;
   background-color: #fff;
-  padding-bottom: 10px;
+  padding: 0 0 10px 10px;
   position: relative;
   color: #555;
   z-index: 2;
   pointer-events: none;
-}
-
-.category-title * {
-  margin-left: 10px;
 }
 
 .category-number {
@@ -32,7 +32,7 @@
 }
 
 .category-name {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .category:hover .category-name {
@@ -56,9 +56,24 @@
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  transition: .5s;
+  transition: transform 0.5s;
   filter: saturate(0%);
   pointer-events: none;
+}
+
+.category-results {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -15%;
+  width: 100%;
+  height: 15%;
+  background-color: #fff;
+  color: #30537a;
+  font-size: 22px;
+  transition: .5s;
+  pointer-events: all;
 }
 
 .category:hover .category-img {
@@ -66,7 +81,7 @@
 }
 
 .category.attempted .category-title,
-.category.attempted .category-stats {
+.category.attempted .category-results {
   color: #30537a;
 }
 
@@ -74,6 +89,19 @@
   filter: saturate(100%);
 }
 
-.category:hover .category.attempted {
+.category.attempted:hover {
   box-shadow: 0px 0px 32px 10px rgba(21, 99, 159, 0.5);
+}
+
+.category.perfect:hover {
+  box-shadow: 0px 0px 32px 10px rgba(255, 215, 0, 1);
+}
+
+.category.perfect .category-title,
+.category.perfect .category-results {
+  color: #ffd700;
+}
+
+.category.category.attempted:hover .category-results {
+  bottom: 0;
 }

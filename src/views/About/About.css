@@ -15,7 +15,7 @@
   background-color: #fff;
 }
 
-.about-block:nth-child(2n){
+.about-block:nth-child(2n) {
   text-align: end;
   align-self: flex-end;
   flex-direction: row-reverse;

@@ -3,9 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ModeSelector.css';
 
-const ModeSelector = ({ title, index }: { title: string; index: number }) => {
+const ModeSelector = ({ title, index, link }: { title: string; index: number; link: string }) => {
   return (
-    <Link to={title}>
+    <Link to={link}>
       <div className="mode-selector">
         <div
           className="mode-preview"
