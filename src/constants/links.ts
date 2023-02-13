@@ -14,10 +14,6 @@ const LINKS = [
     title: 'Картины',
   },
   {
-    to: PATH.blitzQuiz,
-    title: 'Блитц',
-  },
-  {
     to: PATH.settings,
     title: 'Настройки',
   },
@@ -35,10 +31,6 @@ const HOMEPAGE_LINKS = [
   {
     to: PATH.picturesQuiz,
     title: 'Картины',
-  },
-  {
-    to: PATH.blitzQuiz,
-    title: 'Блитц',
   },
 ];
 
