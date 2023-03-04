@@ -1,11 +1,16 @@
 .navigation-bar {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .nav-link {
   position: relative;
+  transition: letter-spacing 0.2s;
+}
+
+.nav-link.active::after {
+  background-color: #333;
 }
 
 .nav-link::after {
@@ -18,6 +23,29 @@
   left: 0;
 }
 
-.nav-link:hover::after {
+.nav-link:hover {
+  letter-spacing: 1px;
+}
+
+.burger-icon {
+  display: none;
   background-color: #333;
+  width: 10px;
+  height: 10px;
+}
+
+@media (max-width: 726px) {
+  .navigation-bar {
+    flex-direction: column;
+    right: 0;
+    position: absolute;
+    width: auto;
+    display: none;
+  }
+  .burger-icon {
+    display: block;
+  }
+  .burger-icon:hover .navigation-bar {
+    display: block;
+  }
 }

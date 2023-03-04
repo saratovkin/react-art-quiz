@@ -22,7 +22,12 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(243, 248, 255, 1) 0%,
+    rgba(241, 241, 241, 1) 39%,
+    rgba(198, 209, 213, 1) 100%
+  );
   flex-direction: column;
 }
 
@@ -35,12 +40,12 @@
   background-image: url(/public/assets/svg/correct.svg);
 }
 
-.answer-icon.wrong {
+.answer-modal.wrong .answer-icon {
   background-image: url(/public/assets/svg/wrong.svg);
 }
 
 .answer-text {
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 .answer-modal button {
@@ -48,4 +53,5 @@
   border: 1px solid #333;
   font-size: 24px;
   width: 300px;
+  height: 60px;
 }

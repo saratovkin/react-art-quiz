@@ -1,14 +1,15 @@
 .picture-answers {
   max-height: 600px;
   max-width: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+  transition: gap 0.5s;
 }
 
 .picture-answer {
-  width: calc(50vw - 30px);
-  height: calc(50vw - 30px);
+  height: calc(50vw - 2rem);
   max-width: 285px;
   max-height: 285px;
   background-size: 100%;

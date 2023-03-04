@@ -9,11 +9,11 @@
 
 .image-question {
   width: 50%;
-  height: 100%;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   transition: background-image 0.2s ease-in-out;
+  min-width: 250px;
 }
 
 .answers {
@@ -30,9 +30,13 @@
   font-size: 20px;
 }
 
-.loading {
-  height: 600px;
-  display: flex;
-  align-items: center;
-  vertical-align: center;
+@media (max-width: 800px) {
+  .artists-container {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .answers {
+    width: 80%;
+  }
 }

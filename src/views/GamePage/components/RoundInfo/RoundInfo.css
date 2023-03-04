@@ -6,7 +6,8 @@
 }
 
 .round-title {
-  font-size: 30px;
+  text-align: center;
+  font-size: 2rem;
   font-weight: 700;
   margin: 20px 0;
 }
@@ -21,4 +22,8 @@
 
 .round-info button {
   margin: 20px 0;
+}
+
+.round-info span {
+  text-align: center;
 }

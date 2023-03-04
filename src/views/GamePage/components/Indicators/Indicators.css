@@ -1,5 +1,6 @@
 .question-indicators {
-  width: 50%;
+  max-width: 800px;
+  width: 100%;
   min-width: 270px;
   justify-content: space-between;
   display: flex;

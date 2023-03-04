@@ -13,11 +13,16 @@ body {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   width: 100vw;
+  font-size: 15px;
+  transition: font-size 0.3s;
 }
 
 .main-container {
-  width: 100%;
+  width: calc(100% - 40px);
+  max-width: 1300px;
   min-height: 100vh;
+  padding: 0 20px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,4 +33,37 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #30537a;
+  border-color: #30537a transparent #30537a transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 10px;
+  }
 }
