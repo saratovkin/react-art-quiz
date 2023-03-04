@@ -45,10 +45,10 @@ const GamePage = () => {
         <NavigationBtns onStartAgain={startAgain} />
       </>
     ) : (
-      <>
+      <div className="game-wrapper">
         <Indicators stats={stats} />
         <GameEngine gameId={startIdx} gameMode={gameMode} saveAnswer={saveAnswer} />
-      </>
+      </div>
     )
   ) : (
     <RoundInfo gameId={gameId} onClick={() => setisRoundStarted(true)} />

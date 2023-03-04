@@ -7,7 +7,6 @@ export const storage = {
 
   get(key: string) {
     const storedItem = localStorage.getItem(key);
-    console.log(storedItem);
     return this.exists(key) && storedItem ? JSON.parse(storedItem) : null;
   },
 

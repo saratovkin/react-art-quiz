@@ -7,10 +7,10 @@ const AnswerModal = ({ answer, action }: { answer: boolean; action: () => void }
   return (
     <>
       <div className="overlay" onClick={action}></div>
-      <div className="answer-modal">
-        <div className={`answer-icon${answer ? '' : ' wrong'}`} />
+      <div className={`answer-modal${answer ? '' : ' wrong'}`}>
+        <div className="answer-icon" />
         <p className="answer-text">{answer ? 'Верно!' : 'Неверно!'}</p>
-        <Button text={'Продолжить'} onClick={action}></Button>
+        <Button text={'Дальше'} onClick={action}></Button>
       </div>
     </>
   );

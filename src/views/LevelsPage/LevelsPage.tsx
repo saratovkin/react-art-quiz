@@ -9,6 +9,7 @@ import LevelCard from './components/LevelCard/LevelCard';
 import './LevelsPage.css';
 
 const LevelsPage = () => {
+  // TODO remove magic number and use gameId param instead of gameMode
   const gameMode = useParams().gameMode;
   const startIdx = gameMode === 'pictures' ? 12 : 0;
   const stats = useSelector((state: RootState) => state.statsReducer).stats;

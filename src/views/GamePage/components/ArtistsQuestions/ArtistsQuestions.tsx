@@ -25,7 +25,7 @@ const ArtistsQuestions = ({ gameId, questionNum, answers, checkAnswer }: Answers
       </div>
     </div>
   ) : (
-    <div className="loading" />
+    <div className="lds-dual-ring"></div>
   );
 };
 

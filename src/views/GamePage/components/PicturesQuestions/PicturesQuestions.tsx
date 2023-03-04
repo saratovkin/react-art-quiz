@@ -15,9 +15,12 @@ const PicturesQuestions = ({ answers, correctAnswer, checkAnswer }: AnswersState
   }
   return isLoaded ? (
     <>
-      <p>
-        Какую картину написал <span>{correctAnswer?.author}</span> ?
-      </p>
+      <div className="picture-qiestion">
+        <p>Какую картину написал</p>
+        <p>
+          <span>{correctAnswer?.author}</span> ?
+        </p>
+      </div>
       <div className="picture-answers">
         {imgUrls?.map((url, i) => (
           <img
@@ -31,7 +34,7 @@ const PicturesQuestions = ({ answers, correctAnswer, checkAnswer }: AnswersState
       </div>
     </>
   ) : (
-    <div className="loading" />
+    <div className="lds-dual-ring"></div>
   );
 };
 
